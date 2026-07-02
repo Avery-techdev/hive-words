@@ -46,7 +46,7 @@ function GameSession({ letterSet, onPlayAgain }: GameSessionProps) {
 
   return (
     <div className="flex w-full flex-col items-center gap-6">
-      <div className="flex w-full items-start justify-between gap-4">
+      <div className="flex w-full items-center justify-center gap-8">
         <GameStats
           foundCount={game.validWords.length}
           totalScore={game.totalScore}
@@ -56,7 +56,7 @@ function GameSession({ letterSet, onPlayAgain }: GameSessionProps) {
           type="button"
           onClick={() => setIsHelpOpen(true)}
           aria-label="How to play"
-          className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-line text-sm font-semibold text-ink focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
+          className="touch-manipulation flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-line text-sm font-semibold text-ink transition-colors hover:border-ink focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
         >
           ?
         </button>
@@ -70,17 +70,20 @@ function GameSession({ letterSet, onPlayAgain }: GameSessionProps) {
         disabled={isBoardDisabled}
       />
 
-      <GameControls
-        canConfirm={game.currentWord.length > 0}
-        canSubmit={game.canSubmit}
-        validWordsCount={game.validWords.length}
-        minWordsRequired={MIN_VALID_WORDS_TO_SUBMIT}
-        disabled={isBoardDisabled}
-        onClear={game.removeLastLetter}
-        onShuffle={game.shuffleLetters}
-        onConfirm={game.confirmWord}
-        onSubmit={game.finishGame}
-      />
+      <div className="lg:mt-4">
+        <GameControls
+          canConfirm={game.currentWord.length > 0}
+          canSubmit={game.canSubmit}
+          validWordsCount={game.validWords.length}
+          minWordsRequired={MIN_VALID_WORDS_TO_SUBMIT}
+          disabled={isBoardDisabled}
+          isValidating={game.isValidating}
+          onClear={game.removeLastLetter}
+          onShuffle={game.shuffleLetters}
+          onConfirm={game.confirmWord}
+          onSubmit={game.finishGame}
+        />
+      </div>
 
       <WordList words={game.validWords} />
 

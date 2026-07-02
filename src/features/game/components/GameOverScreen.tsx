@@ -26,7 +26,7 @@ export function GameOverScreen({
         type="button"
         aria-label="Close dialog"
         onClick={onPlayAgain}
-        className="absolute inset-0 bg-ink/50"
+        className="touch-manipulation absolute inset-0 bg-ink/50"
       />
       <div
         ref={dialogRef}
@@ -47,7 +47,9 @@ export function GameOverScreen({
 
         <ul className="mt-6 grid grid-cols-2 gap-4">
           <li className="flex flex-col gap-0.5">
-            <span className="text-xs tracking-widest text-ink-muted uppercase">Score</span>
+            <span className="text-xs tracking-widest text-ink-muted uppercase">
+              Score
+            </span>
             <span className="text-2xl font-semibold text-ink">{totalScore}</span>
           </li>
           <li className="flex flex-col gap-0.5">
@@ -63,7 +65,7 @@ export function GameOverScreen({
         <button
           type="button"
           onClick={onPlayAgain}
-          className="mt-6 w-full rounded-full bg-accent px-4 py-2.5 text-sm font-semibold text-paper focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
+          className="touch-manipulation mt-6 w-full rounded-full bg-accent px-4 py-2.5 text-sm font-semibold text-paper focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
         >
           Play again
         </button>

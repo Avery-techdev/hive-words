@@ -16,7 +16,7 @@ export function HelpOverlay({ isOpen, onClose }: HelpOverlayProps) {
         type="button"
         aria-label="Close dialog"
         onClick={onClose}
-        className="absolute inset-0 bg-ink/50"
+        className="touch-manipulation absolute inset-0 bg-ink/50"
       />
       <div
         ref={dialogRef}
@@ -32,13 +32,13 @@ export function HelpOverlay({ isOpen, onClose }: HelpOverlayProps) {
         <ol className="mt-4 list-decimal space-y-2 pl-5 text-sm text-ink-muted">
           <li>Click the letters to spell an English word (min. 3 letters).</li>
           <li>Confirm the word to check it against the dictionary.</li>
-          <li>Delete removes the last letter, Shuffle reorders the outer letters.</li>
+          <li>Delete removes the last letter, Shuffle reorders all the letters.</li>
           <li>Find at least 2 valid words, then submit your solution.</li>
         </ol>
         <button
           type="button"
           onClick={onClose}
-          className="mt-6 w-full rounded-full bg-ink px-4 py-2 text-sm font-medium text-paper focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
+          className="touch-manipulation mt-6 w-full rounded-full bg-ink px-4 py-2 text-sm font-medium text-paper focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
         >
           Got it
         </button>

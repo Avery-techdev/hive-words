@@ -15,15 +15,25 @@ interface WordInputProps {
 
 export function WordInput({ currentWord, feedback }: WordInputProps) {
   const isError = feedback !== null && feedback.type !== 'success'
+  const hasWord = currentWord.length > 0
 
   return (
     <div className="flex min-h-16 flex-col items-center justify-center gap-1 text-center">
       <p
-        className={`text-2xl font-semibold tracking-wide uppercase ${isError ? 'text-accent' : 'text-ink'}`}
+        className={
+          hasWord
+            ? `text-2xl font-semibold tracking-wide uppercase transition-colors duration-150 ${isError ? 'text-accent' : 'text-ink'}`
+            : 'text-base font-normal text-ink-muted'
+        }
       >
-        {currentWord.length > 0 ? currentWord : ' '}
+        {hasWord ? currentWord : 'Tap letters to spell a word'}
       </p>
-      <p role="status" aria-live="polite" className="min-h-5 text-sm text-ink-muted">
+      <p
+        key={feedback ? `${feedback.type}-${feedback.word}` : 'no-feedback'}
+        role="status"
+        aria-live="polite"
+        className="animate-fade-in min-h-5 text-sm text-ink-muted"
+      >
         {feedback ? FEEDBACK_MESSAGES[feedback.type] : ''}
       </p>
     </div>

@@ -4,6 +4,7 @@ interface GameControlsProps {
   readonly validWordsCount: number
   readonly minWordsRequired: number
   readonly disabled: boolean
+  readonly isValidating: boolean
   readonly onClear: () => void
   readonly onShuffle: () => void
   readonly onConfirm: () => void
@@ -12,12 +13,16 @@ interface GameControlsProps {
 
 const SUBMIT_HINT_ID = 'submit-requirement-hint'
 
+const SECONDARY_BUTTON_CLASS =
+  'touch-manipulation min-w-23 rounded-full border border-ink bg-paper px-4 py-2 text-center text-sm font-medium text-ink transition-colors hover:bg-canvas focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 disabled:opacity-40'
+
 export function GameControls({
   canConfirm,
   canSubmit,
   validWordsCount,
   minWordsRequired,
   disabled,
+  isValidating,
   onClear,
   onShuffle,
   onConfirm,
@@ -25,13 +30,13 @@ export function GameControls({
 }: GameControlsProps) {
   const missingWords = Math.max(minWordsRequired - validWordsCount, 0)
   return (
-    <div className="flex flex-col items-center gap-3">
+    <div className="flex flex-col items-center gap-3 lg:gap-6">
       <div className="flex items-center gap-3">
         <button
           type="button"
           onClick={onClear}
           disabled={disabled}
-          className="rounded-full border border-line px-4 py-2 text-sm font-medium text-ink transition-colors hover:border-ink focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 disabled:opacity-40"
+          className={SECONDARY_BUTTON_CLASS}
         >
           Delete
         </button>
@@ -40,7 +45,7 @@ export function GameControls({
           onClick={onShuffle}
           disabled={disabled}
           aria-label="Shuffle letters"
-          className="rounded-full border border-line px-4 py-2 text-sm font-medium text-ink transition-colors hover:border-ink focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 disabled:opacity-40"
+          className={SECONDARY_BUTTON_CLASS}
         >
           Shuffle
         </button>
@@ -48,9 +53,9 @@ export function GameControls({
           type="button"
           onClick={onConfirm}
           disabled={disabled || !canConfirm}
-          className="rounded-full bg-ink px-4 py-2 text-sm font-medium text-paper transition-opacity focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 disabled:opacity-40"
+          className={SECONDARY_BUTTON_CLASS}
         >
-          Confirm
+          {isValidating ? 'Checking…' : 'Confirm'}
         </button>
       </div>
       <button
@@ -58,7 +63,7 @@ export function GameControls({
         onClick={onSubmit}
         disabled={disabled || !canSubmit}
         aria-describedby={canSubmit ? undefined : SUBMIT_HINT_ID}
-        className="rounded-full bg-accent px-6 py-2.5 text-sm font-semibold text-paper transition-opacity focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 disabled:opacity-40"
+        className="touch-manipulation rounded-full bg-accent px-6 py-2.5 text-sm font-semibold text-paper transition-opacity hover:opacity-90 focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 disabled:opacity-40"
       >
         Submit solution
       </button>
