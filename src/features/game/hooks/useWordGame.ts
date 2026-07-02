@@ -5,8 +5,7 @@ import { validateWord } from '../services/dictionaryService'
 import { MIN_WORD_LENGTH, MIN_VALID_WORDS_TO_SUBMIT } from '../constants'
 
 interface UseWordGameResult {
-  readonly centerLetter: string
-  readonly outerLetters: readonly string[]
+  readonly letters: readonly string[]
   readonly currentWord: string
   readonly attempts: readonly WordAttempt[]
   readonly validWords: readonly WordAttempt[]
@@ -36,8 +35,8 @@ function shuffleArray<T>(items: readonly T[]): T[] {
 }
 
 export function useWordGame(letterSet: LetterSet): UseWordGameResult {
-  const [outerLetters, setOuterLetters] = useState<readonly string[]>(
-    letterSet.outerLetters,
+  const [letters, setLetters] = useState<readonly string[]>(() =>
+    shuffleArray([letterSet.centerLetter, ...letterSet.outerLetters]),
   )
   const [currentWord, setCurrentWord] = useState('')
   const [attempts, setAttempts] = useState<readonly WordAttempt[]>([])
@@ -72,7 +71,7 @@ export function useWordGame(letterSet: LetterSet): UseWordGameResult {
 
   function shuffleLetters(): void {
     if (phase === 'completed') return
-    setOuterLetters((prev) => shuffleArray(prev))
+    setLetters((prev) => shuffleArray(prev))
   }
 
   function clearFeedback(): void {
@@ -120,8 +119,7 @@ export function useWordGame(letterSet: LetterSet): UseWordGameResult {
   }
 
   return {
-    centerLetter: letterSet.centerLetter,
-    outerLetters,
+    letters,
     currentWord,
     attempts,
     validWords,
