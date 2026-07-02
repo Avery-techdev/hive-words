@@ -26,7 +26,7 @@ export function GameStats({ foundCount, totalScore, totalPossible }: GameStatsPr
           </span>
           <span
             key={stat.animateOnChange ? stat.value : undefined}
-            className={`text-xl font-semibold text-ink ${stat.animateOnChange ? 'animate-count-pop' : ''}`}
+            className={`text-xl font-semibold text-text ${stat.animateOnChange ? 'animate-count-pop' : ''}`}
           >
             {stat.value}
           </span>

@@ -1,9 +1,45 @@
 import { GameBoard } from '@/features/game'
 
+interface DustParticle {
+  readonly left: string
+  readonly bottom: string
+  readonly size: number
+  readonly delay: string
+  readonly duration: string
+}
+
+const DUST_PARTICLES: readonly DustParticle[] = [
+  { left: '8%', bottom: '10%', size: 3, delay: '0s', duration: '11s' },
+  { left: '18%', bottom: '60%', size: 2, delay: '2.5s', duration: '9s' },
+  { left: '32%', bottom: '25%', size: 4, delay: '1s', duration: '13s' },
+  { left: '48%', bottom: '70%', size: 2, delay: '4s', duration: '10s' },
+  { left: '63%', bottom: '15%', size: 3, delay: '1.8s', duration: '12s' },
+  { left: '77%', bottom: '55%', size: 2, delay: '3.2s', duration: '9.5s' },
+  { left: '88%', bottom: '30%', size: 3, delay: '0.6s', duration: '11.5s' },
+  { left: '55%', bottom: '5%', size: 2, delay: '5s', duration: '10.5s' },
+]
+
 function App() {
   return (
-    <main className="flex min-h-full items-center justify-center bg-[#F0F0F0] p-4 sm:p-8">
-      <div className="w-full max-w-md rounded-[28px] border border-line bg-[#FAFAFA] p-6 shadow-xl sm:max-w-lg sm:p-8 lg:max-w-2xl lg:p-10">
+    <main className="relative flex min-h-full items-center justify-center overflow-hidden bg-[radial-gradient(ellipse_at_top,#2C1A00_0%,#0D0800_100%)] sm:p-4 lg:p-8">
+      <div aria-hidden="true" className="pointer-events-none absolute inset-0">
+        {DUST_PARTICLES.map((particle, index) => (
+          <span
+            key={index}
+            className="animate-dust-rise absolute rounded-full bg-[#FFD580]"
+            style={{
+              left: particle.left,
+              bottom: particle.bottom,
+              width: particle.size,
+              height: particle.size,
+              animationDelay: particle.delay,
+              animationDuration: particle.duration,
+            }}
+          />
+        ))}
+      </div>
+
+      <div className="relative min-h-screen w-full bg-paper p-6 sm:min-h-0 sm:max-w-lg sm:rounded-[28px] sm:border sm:border-line sm:p-8 sm:shadow-xl lg:max-w-2xl lg:p-10">
         <h1 className="text-center text-3xl font-bold text-ink">
           Hive
           <span className="animate-title-dot inline-block text-accent">·</span>

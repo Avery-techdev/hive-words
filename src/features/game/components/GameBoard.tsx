@@ -56,7 +56,7 @@ function GameSession({ letterSet, onPlayAgain }: GameSessionProps) {
           type="button"
           onClick={() => setIsHelpOpen(true)}
           aria-label="How to play"
-          className="touch-manipulation flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-line text-sm font-semibold text-ink transition-colors hover:border-ink focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
+          className="touch-manipulation flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-hex-border text-sm font-semibold text-ink transition-colors hover:border-accent focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
         >
           ?
         </button>
@@ -85,7 +85,9 @@ function GameSession({ letterSet, onPlayAgain }: GameSessionProps) {
         />
       </div>
 
-      <WordList words={game.validWords} />
+      <div className="-mt-2 w-full">
+        <WordList words={game.validWords} />
+      </div>
 
       <HelpOverlay isOpen={isHelpOpen} onClose={closeHelp} />
 

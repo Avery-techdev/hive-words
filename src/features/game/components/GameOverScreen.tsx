@@ -26,7 +26,7 @@ export function GameOverScreen({
         type="button"
         aria-label="Close dialog"
         onClick={onPlayAgain}
-        className="touch-manipulation absolute inset-0 bg-ink/50"
+        className="touch-manipulation absolute inset-0 bg-black/60"
       />
       <div
         ref={dialogRef}

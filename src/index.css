@@ -2,16 +2,23 @@
 
 /*
  * Central design tokens (single source of truth for styling).
- * Style: black-and-white base, high contrast, one subtle accent color used
- * exclusively for interaction/feedback. Breakpoints are mobile-first.
+ * Style: warm hive/honey world — deep brown-black surfaces, gold borders,
+ * honey-orange accent. Breakpoints are mobile-first.
  */
 @theme {
-  --color-canvas: #f8f8f8;
-  --color-paper: #ffffff;
-  --color-ink: #0a0a0a;
-  --color-ink-muted: #6b7280;
-  --color-line: #e5e5e5;
-  --color-accent: #3b5bff;
+  --color-canvas: #2c1a00;
+  --color-paper: #1a0f00;
+  --color-ink: #ffe4a0;
+  --color-ink-muted: #c17f24;
+  --color-line: #3d2200;
+  --color-accent: #f5a623;
+
+  --color-hex-fill: #3d2200;
+  --color-hex-fill-dark: #2a1500;
+  --color-hex-border: #c17f24;
+  --color-hex-center-start: #e8a020;
+  --color-hex-center-end: #c17f24;
+  --color-text: #ffd580;
 
   --font-sans:
     "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
@@ -26,6 +33,7 @@
   --animate-score-fade: score-fade 340ms ease-out both;
   --animate-title-dot: title-dot 2.6s cubic-bezier(0.5, 0, 0.5, 1) infinite;
   --animate-catch-flash: catch-flash 480ms ease-out both;
+  --animate-dust-rise: dust-rise 10s ease-in-out infinite;
 }
 
 @keyframes fade-in {
@@ -155,8 +163,26 @@
   }
 }
 
+/* Motes of light drifting slowly upward, like dust in a sunbeam. */
+@keyframes dust-rise {
+  0% {
+    transform: translateY(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.15;
+  }
+  90% {
+    opacity: 0.15;
+  }
+  100% {
+    transform: translateY(-120px);
+    opacity: 0;
+  }
+}
+
 :root {
-  color-scheme: light;
+  color-scheme: dark;
 }
 
 html,

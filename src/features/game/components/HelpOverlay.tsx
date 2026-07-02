@@ -16,7 +16,7 @@ export function HelpOverlay({ isOpen, onClose }: HelpOverlayProps) {
         type="button"
         aria-label="Close dialog"
         onClick={onClose}
-        className="touch-manipulation absolute inset-0 bg-ink/50"
+        className="touch-manipulation absolute inset-0 bg-black/60"
       />
       <div
         ref={dialogRef}

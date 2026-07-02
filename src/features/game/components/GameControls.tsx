@@ -14,7 +14,10 @@ interface GameControlsProps {
 const SUBMIT_HINT_ID = 'submit-requirement-hint'
 
 const SECONDARY_BUTTON_CLASS =
-  'touch-manipulation min-w-23 rounded-full border border-ink bg-paper px-4 py-2 text-center text-sm font-medium text-ink transition-colors hover:bg-canvas focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 disabled:opacity-40'
+  'touch-manipulation min-w-23 rounded-full border border-hex-border bg-canvas px-4 py-2 text-center text-sm font-medium text-ink transition-colors hover:border-accent focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 disabled:opacity-40'
+
+const CONFIRM_BUTTON_CLASS =
+  'touch-manipulation min-w-23 rounded-full border border-hex-border px-4 py-2 text-center text-sm font-medium transition-colors focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2'
 
 export function GameControls({
   canConfirm,
@@ -29,6 +32,7 @@ export function GameControls({
   onSubmit,
 }: GameControlsProps) {
   const missingWords = Math.max(minWordsRequired - validWordsCount, 0)
+  const isConfirmDisabled = disabled || !canConfirm
   return (
     <div className="flex flex-col items-center gap-3 lg:gap-6">
       <div className="flex items-center gap-3">
@@ -52,8 +56,12 @@ export function GameControls({
         <button
           type="button"
           onClick={onConfirm}
-          disabled={disabled || !canConfirm}
-          className={SECONDARY_BUTTON_CLASS}
+          disabled={isConfirmDisabled}
+          className={`${CONFIRM_BUTTON_CLASS} ${
+            isConfirmDisabled
+              ? 'bg-transparent text-hex-border'
+              : 'bg-canvas text-ink hover:border-accent'
+          }`}
         >
           {isValidating ? 'Checking…' : 'Confirm'}
         </button>
@@ -67,11 +75,16 @@ export function GameControls({
       >
         Submit solution
       </button>
-      <p id={SUBMIT_HINT_ID} role="status" aria-live="polite" className="min-h-4 text-xs text-ink-muted">
-        {!canSubmit && missingWords > 0
-          ? `Find ${missingWords} more valid word${missingWords === 1 ? '' : 's'} to submit.`
-          : ''}
-      </p>
+      {!canSubmit && missingWords > 0 && (
+        <p
+          id={SUBMIT_HINT_ID}
+          role="status"
+          aria-live="polite"
+          className="text-xs text-ink-muted"
+        >
+          {`Find ${missingWords} more valid word${missingWords === 1 ? '' : 's'} to submit.`}
+        </p>
+      )}
     </div>
   )
 }
