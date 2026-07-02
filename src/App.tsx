@@ -48,6 +48,27 @@ function App() {
         <div className="mt-6">
           <GameBoard />
         </div>
+
+        <p className="mt-8 text-center text-xs text-ink-muted">
+          Built by Avery Hauschild —{' '}
+          <a
+            href="https://github.com/Avery-techdev/sky-catcher"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline decoration-hex-border underline-offset-2 transition-colors hover:text-accent"
+          >
+            GitHub
+          </a>{' '}
+          ·{' '}
+          <a
+            href="https://ah-development.de/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline decoration-hex-border underline-offset-2 transition-colors hover:text-accent"
+          >
+            ah-development.de
+          </a>
+        </p>
       </div>
     </main>
   )
