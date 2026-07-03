@@ -47,7 +47,10 @@ function useViewportTier(): ViewportTier {
   return tier
 }
 
-function outerHexagonOffset(angleDeg: number, radiusPx: number): { x: number; y: number } {
+function outerHexagonOffset(
+  angleDeg: number,
+  radiusPx: number,
+): { x: number; y: number } {
   const angleRad = (angleDeg * Math.PI) / 180
   return {
     x: radiusPx * Math.cos(angleRad),
@@ -66,7 +69,9 @@ export function HexagonGrid({ letters, onLetterClick, disabled }: HexagonGridPro
   const radiusPx = hexHeight
   const hexStyle = { width: hexWidth, height: hexHeight }
 
-  const outerOffsets = OUTER_ANGLES_DEG.map((angle) => outerHexagonOffset(angle, radiusPx))
+  const outerOffsets = OUTER_ANGLES_DEG.map((angle) =>
+    outerHexagonOffset(angle, radiusPx),
+  )
   const gridWidth = Math.max(...outerOffsets.map((o) => Math.abs(o.x))) * 2 + hexWidth
   const gridHeight = Math.max(...outerOffsets.map((o) => Math.abs(o.y))) * 2 + hexHeight
 
@@ -85,7 +90,7 @@ export function HexagonGrid({ letters, onLetterClick, disabled }: HexagonGridPro
         onClick={() => onLetterClick(centerLetter)}
         onTouchStart={() => undefined}
         style={hexStyle}
-        className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 touch-manipulation bg-[linear-gradient(var(--color-hex-center-start),var(--color-hex-center-end))] text-3xl font-bold text-hex-center-text shadow-[inset_0_1px_0_rgba(255,255,255,0.15)] transition-[scale] duration-200 ease-[ease] hover:enabled:scale-105 active:scale-[0.96] focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 disabled:opacity-40 ${HEXAGON_CLIP_PATH}`}
+        className={`absolute top-1/2 left-1/2 z-10 -translate-x-1/2 -translate-y-1/2 touch-manipulation bg-[linear-gradient(var(--color-hex-center-start),var(--color-hex-center-end))] text-3xl font-bold text-hex-center-text shadow-[inset_0_1px_0_rgba(255,255,255,0.15)] transition-[scale,filter] duration-200 ease-[ease] hover:enabled:scale-110 hover:enabled:brightness-110 hover:enabled:filter-[drop-shadow(0_0_14px_rgba(245,166,35,0.8))] active:scale-[0.96] focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 disabled:opacity-40 ${HEXAGON_CLIP_PATH}`}
       >
         {centerLetter}
       </button>
