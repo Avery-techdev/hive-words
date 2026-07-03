@@ -15,7 +15,7 @@ export function HelpOverlay({ isOpen, onClose }: HelpOverlayProps) {
         <li>Click the letters to spell an English word (min. 3 letters).</li>
         <li>Confirm the word to check it against the dictionary.</li>
         <li>Delete removes the last letter, Shuffle reorders all the letters.</li>
-        <li>Find at least 2 valid words, then submit your solution.</li>
+        <li>Find at least 2 valid words, then finish the game.</li>
       </ol>
       <button
         type="button"

@@ -73,7 +73,7 @@ export function GameControls({
         aria-describedby={canSubmit ? undefined : SUBMIT_HINT_ID}
         className="touch-manipulation rounded-full bg-accent px-6 py-2.5 text-sm font-semibold text-paper transition-opacity hover:opacity-90 focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 disabled:opacity-40"
       >
-        Submit solution
+        Finish game
       </button>
       {!canSubmit && missingWords > 0 && (
         <p
@@ -82,7 +82,7 @@ export function GameControls({
           aria-live="polite"
           className="text-xs text-ink-muted"
         >
-          {`Find ${missingWords} more valid word${missingWords === 1 ? '' : 's'} to submit.`}
+          {`Find ${missingWords} more valid word${missingWords === 1 ? '' : 's'} to finish the game.`}
         </p>
       )}
     </div>

@@ -23,7 +23,7 @@ export function GameOverScreen({
       contentClassName="text-center"
     >
       <h2 id="game-over-title" className="text-lg font-semibold text-ink">
-        {isAllWordsFound ? 'All words found!' : 'Solution submitted'}
+        {isAllWordsFound ? 'All words found!' : 'Game finished'}
       </h2>
       <p className="mt-2 text-sm text-ink-muted">
         {isAllWordsFound
@@ -51,7 +51,7 @@ export function GameOverScreen({
         onClick={onPlayAgain}
         className="touch-manipulation mt-6 w-full rounded-full bg-accent px-4 py-2.5 text-sm font-semibold text-paper focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
       >
-        Play again
+        New game
       </button>
     </Dialog>
   )
