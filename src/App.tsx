@@ -21,7 +21,7 @@ const DUST_PARTICLES: readonly DustParticle[] = [
 
 function App() {
   return (
-    <main className="relative flex min-h-full items-center justify-center overflow-hidden bg-[radial-gradient(ellipse_at_top,#2C1A00_0%,#0D0800_100%)] sm:p-4 lg:p-8">
+    <main className="relative flex min-h-full items-center justify-center overflow-hidden bg-[radial-gradient(ellipse_at_top,#241500_0%,#140A00_100%)] sm:p-4 lg:p-8">
       <div aria-hidden="true" className="pointer-events-none absolute inset-0">
         {DUST_PARTICLES.map((particle, index) => (
           <span

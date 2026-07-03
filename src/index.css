@@ -6,15 +6,15 @@
  * honey-orange accent. Breakpoints are mobile-first.
  */
 @theme {
-  --color-canvas: #2c1a00;
-  --color-paper: #1a0f00;
+  --color-canvas: #3d2500;
+  --color-paper: #331e00;
   --color-ink: #ffe4a0;
   --color-ink-muted: #c17f24;
-  --color-line: #3d2200;
+  --color-line: #4d2e00;
   --color-accent: #f5a623;
 
-  --color-hex-fill: #3d2200;
-  --color-hex-fill-dark: #2a1500;
+  --color-hex-fill: #4d2e00;
+  --color-hex-fill-dark: #3d2500;
   --color-hex-border: #c17f24;
   --color-hex-center-start: #e8a020;
   --color-hex-center-end: #c17f24;
