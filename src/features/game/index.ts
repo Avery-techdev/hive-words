@@ -1,4 +1,4 @@
-export type { LetterSet, Difficulty } from './types/letterSet.types'
+export type { LetterSet } from './types/letterSet.types'
 export type {
   WordValidationStatus,
   WordValidationResult,

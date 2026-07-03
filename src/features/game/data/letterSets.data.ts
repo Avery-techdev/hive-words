@@ -5,7 +5,6 @@ export const letterSets: readonly LetterSet[] = [
     id: 'aerston',
     centerLetter: 'O',
     outerLetters: ['A', 'E', 'R', 'T', 'S', 'N'],
-    difficulty: 'easy',
     validWords: [
       'are',
       'ear',
@@ -54,7 +53,6 @@ export const letterSets: readonly LetterSet[] = [
     id: 'alimpet',
     centerLetter: 'A',
     outerLetters: ['L', 'I', 'M', 'P', 'E', 'T'],
-    difficulty: 'medium',
     validWords: [
       'lime',
       'lame',
@@ -88,7 +86,6 @@ export const letterSets: readonly LetterSet[] = [
     id: 'acretio',
     centerLetter: 'A',
     outerLetters: ['C', 'R', 'E', 'T', 'I', 'O'],
-    difficulty: 'medium',
     validWords: [
       'care',
       'race',
@@ -119,7 +116,6 @@ export const letterSets: readonly LetterSet[] = [
     id: 'astremp',
     centerLetter: 'A',
     outerLetters: ['S', 'T', 'R', 'E', 'M', 'P'],
-    difficulty: 'hard',
     validWords: [
       'temper',
       'master',

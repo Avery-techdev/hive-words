@@ -85,7 +85,7 @@ export function HexagonGrid({ letters, onLetterClick, disabled }: HexagonGridPro
         onClick={() => onLetterClick(centerLetter)}
         onTouchStart={() => undefined}
         style={hexStyle}
-        className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 touch-manipulation bg-[linear-gradient(var(--color-hex-center-start),var(--color-hex-center-end))] text-3xl font-bold text-[#1A0F00] shadow-[inset_0_1px_0_rgba(255,255,255,0.15)] transition-[scale] duration-200 ease-[ease] hover:enabled:scale-105 active:scale-[0.96] focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 disabled:opacity-40 ${HEXAGON_CLIP_PATH}`}
+        className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 touch-manipulation bg-[linear-gradient(var(--color-hex-center-start),var(--color-hex-center-end))] text-3xl font-bold text-hex-center-text shadow-[inset_0_1px_0_rgba(255,255,255,0.15)] transition-[scale] duration-200 ease-[ease] hover:enabled:scale-105 active:scale-[0.96] focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 disabled:opacity-40 ${HEXAGON_CLIP_PATH}`}
       >
         {centerLetter}
       </button>

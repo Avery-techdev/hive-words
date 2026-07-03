@@ -18,11 +18,9 @@ interface UseWordGameResult {
   readonly isValidating: boolean
   readonly selectLetter: (letter: string) => void
   readonly removeLastLetter: () => void
-  readonly clearWord: () => void
   readonly shuffleLetters: () => void
   readonly confirmWord: () => Promise<void>
   readonly finishGame: () => void
-  readonly clearFeedback: () => void
 }
 
 function shuffleArray<T>(items: readonly T[]): T[] {
@@ -64,18 +62,9 @@ export function useWordGame(letterSet: LetterSet): UseWordGameResult {
     setCurrentWord((prev) => prev.slice(0, -1))
   }
 
-  function clearWord(): void {
-    if (phase === 'completed' || isValidating) return
-    setCurrentWord('')
-  }
-
   function shuffleLetters(): void {
     if (phase === 'completed') return
     setLetters((prev) => shuffleArray(prev))
-  }
-
-  function clearFeedback(): void {
-    setFeedback(null)
   }
 
   function finishGame(): void {
@@ -132,10 +121,8 @@ export function useWordGame(letterSet: LetterSet): UseWordGameResult {
     isValidating,
     selectLetter,
     removeLastLetter,
-    clearWord,
     shuffleLetters,
     confirmWord,
     finishGame,
-    clearFeedback,
   }
 }

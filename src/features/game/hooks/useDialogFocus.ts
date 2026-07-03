@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react'
+import type { RefObject } from 'react'
 
 interface UseDialogFocusOptions {
   readonly isOpen: boolean
@@ -11,7 +12,7 @@ const FOCUSABLE_SELECTOR =
 export function useDialogFocus<T extends HTMLElement>({
   isOpen,
   onClose,
-}: UseDialogFocusOptions) {
+}: UseDialogFocusOptions): RefObject<T | null> {
   const dialogRef = useRef<T | null>(null)
 
   useEffect(() => {
