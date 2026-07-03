@@ -17,6 +17,13 @@ export function WordInput({ currentWord, feedback }: WordInputProps) {
   const isError = feedback !== null && feedback.type !== 'success'
   const hasWord = currentWord.length > 0
 
+  const feedbackClassName =
+    feedback === null
+      ? 'text-ink-muted'
+      : feedback.type === 'success'
+        ? 'animate-glow-pop text-accent'
+        : 'animate-shake text-ink'
+
   return (
     <div className="flex min-h-16 flex-col items-center justify-center gap-1 text-center">
       <p
@@ -32,7 +39,7 @@ export function WordInput({ currentWord, feedback }: WordInputProps) {
         key={feedback ? `${feedback.type}-${feedback.word}` : 'no-feedback'}
         role="status"
         aria-live="polite"
-        className="animate-fade-in min-h-5 text-sm text-ink-muted"
+        className={`min-h-6 text-base font-semibold ${feedbackClassName}`}
       >
         {feedback ? FEEDBACK_MESSAGES[feedback.type] : ''}
       </p>
